@@ -130,7 +130,7 @@ the output is:
 ![](assets/2024-02-15-14-36-25.png)
 
 ## Port checking
-Finaly, we are interested to execute this application by usin the port `19530
+Finaly, we are interested to execute this application by usin the port `19530`.
 
 To check if port `19530` is open on your server, you can use a port scanning tool like `nmap` or `telnet`. Here are the steps to check the port status:
 Use the `telnet` command to check the port status. Run the following command in the terminal  in the Server:
@@ -139,13 +139,9 @@ telnet <server_ip_address> 19530
 ```
 Replace `<server_ip_address>` with the actual IP address of your server. If the port is open, you will see a connection established. If the port is closed or not reachable, the connection will fail.
 
-If you are unable to perform these checks or if you are not the administrator of the server, you  should open the inboud port of the server.
+If you are unable to perform these checks  you  should open the inboud port of the server, you can add the source the server where you will use to make the query.
 
 ![](assets/2024-02-15-16-46-23.png)
-
-
-
-
 
 # Milvus Embedding Client
 
