@@ -20,7 +20,7 @@ By calculating similarity distances between vectors, WatsonX.ai's Foundation Mod
 First we need to install our Vector Database. The sytem where we want to deploy our database is Ubuntu 22.04.
 1. Log in to your IBM Cloud account [here](https://cloud.ibm.com/).
 2. From the IBM Cloud dashboard, click on the "Catalog" tab.
-3. In the search bar, type "Virtual Servers" and select the "Virtual Servers" option from the results.
+3. In the search bar, type `Virtual Servers` and select the "Virtual Servers" option from the results.
 4. On the Virtual Servers page, you will find various options for virtual servers. 
 Got to Image and Profile and click Change image and find for ubuntu and we choose 
 `22.04 LTS Jammy Jellyfish Minimal Install` and click save
@@ -29,7 +29,9 @@ Got to Image and Profile and click Change image and find for ubuntu and we choos
 6. On the configuration page, you will be prompted to provide various details like the location, CPU, memory, storage, and operating system. We choose the simplest `bx2-2x8`
 ![](assets/2024-02-14-16-49-31.png)
 7. We create a ssh key with the name pem_ibmcloud and we download.
-8.  Complete the remaining configuration options as default,  network settings, and storage options.
+8.  Complete the remaining configuration options as default, storage options and network settings with exception of adding a port open to connect it.
+
+
 9. Once you have configured the instance, review the settings and click on the "Create" button to create the instance.
 10. IBM Cloud will initiate the provisioning process, and your Ubuntu instance will be created.
 Copy the public ip of you virtual instance.
@@ -96,6 +98,7 @@ sudo apt-get install -y python-pip
 # Verify installation
 python3.10 --version
 
+
 We install some packages to test 
 
 ```
@@ -125,6 +128,24 @@ python3 hello_milvus.py
 the output is:
 
 ![](assets/2024-02-15-14-36-25.png)
+
+## Port checking
+Finaly, we are interested to execute this application by usin the port `19530
+
+To check if port `19530` is open on your server, you can use a port scanning tool like `nmap` or `telnet`. Here are the steps to check the port status:
+Use the `telnet` command to check the port status. Run the following command in the terminal  in the Server:
+```
+telnet <server_ip_address> 19530
+```
+Replace `<server_ip_address>` with the actual IP address of your server. If the port is open, you will see a connection established. If the port is closed or not reachable, the connection will fail.
+
+If you are unable to perform these checks or if you are not the administrator of the server, you  should open the inboud port of the server.
+
+![](assets/2024-02-15-16-46-23.png)
+
+
+
+
 
 # Milvus Embedding Client
 
