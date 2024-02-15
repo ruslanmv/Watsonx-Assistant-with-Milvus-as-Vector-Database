@@ -51,3 +51,11 @@ This example will show you how to find the similar asked question and get the an
 Then repeat the previos step by selecting Select Kernel 
 ![](assets/2024-02-15-15-54-48.png)
 and now we can proceed with the notebook.
+Run all the cells and and the end you can
+open the following link
+
+[ http://127.0.0.1:7860/](http://127.0.0.1:7860/)
+
+and you got a Chat where you can make queries to your database.
+
+![](assets/2024-02-15-17-55-07.png)
