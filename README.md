@@ -35,18 +35,115 @@ Got to Image and Profile and click Change image and find for ubuntu and we choos
 Copy the public ip of you virtual instance.
 
 ## Step 2 - Connection to the server
-Once the server is running we can connect to the server via ssh, for example
+
+Open an SSH client.
+
+Locate your private key file. The key used to launch this instance is private-key.pem
+Run this command, if necessary, to ensure your key is not publicly viewable.
+```
+chmod 400 "private-key.pem"
+```
+
+Connect to your instance using its Public ip:
+
+Example:
+```
+ssh -p 2223 -i private-key.pem itzuser@158.175.181.145
+```
+
+## Step 3 - Install Milvus
+
+Install Milvus with dpkg on Ubuntu
+$ wget https://github.com/milvus-io/milvus/releases/download/v2.3.7/milvus_2.3.7-1_amd64.deb
 
 ```
-ssh -i pem_ibmcloud.pem itzuser@158.175.181.145
+sudo apt-get update
+sudo dpkg -i milvus_2.3.7-1_amd64.deb
+sudo apt-get -f install
+```
+## Check the status of Milvus
+
+First you restart, 
+```
+sudo systemctl restart milvus
+```
+there is not expected out, and then
+
+```
+sudo systemctl status milvus
+
+```
+![](assets/2024-02-15-09-49-05.png)
+
+### Testing Server
+
+First we assure that python3 is installed
+
+Add the deadsnakes PPA (might have Python 3.10)
+```
+sudo add-apt-repository -y ppa:deadsnakes/ppa
+```
+# Update package list again
+```
+sudo apt-get update
+```
+ Install Python 3.10
+```
+sudo apt-get install -y python3.10
+sudo apt-get install -y python-pip
 ```
 
+# Verify installation
+python3.10 --version
 
+We install some packages to test 
 
+```
+pip install numpy pymilvus 
+```
 
+Download hello_milvus.py directly or with the following command.
 
+```
+wget https://raw.githubusercontent.com/milvus-io/pymilvus/master/examples/hello_milvus.py
 
+```
+and then we proceed with the following actions
+ 1. connect to Milvus
+ 2. create collection
+ 3. insert data
+ 4. create index
+ 5. search, query, and hybrid search on entities
+ 6. delete entities by PK
+ 7. drop collection
 
+you can visulaze the code [here](https://raw.githubusercontent.com/milvus-io/pymilvus/master/examples/hello_milvus.py)
 
+```
+python3 hello_milvus.py
+```
+the output is:
+```
+=== start connecting to Milvus     ===
+Does collection hello_milvus exist in Milvus: False
+=== Create collection `hello_milvus` ===
+=== Start inserting entities       ===
+Number of entities in Milvus: 3000
+=== Start Creating index IVF_FLAT  ===
+=== Start loading                  ===
+=== Start searching based on vector similarity ===
+...
+search latency = 0.1646s
+=== Start querying with `random > 0.5` ===
+...
+search latency = 0.1994s
+=== Start deleting with expr `pk in ["0" , "1"]` ===
+...
+query after delete by expr=`pk in ["0" , "1"]` -> result: []
+=== Drop collection `hello_milvus` ===
+```
 
+# Milvus Embedding Client
+
+Let first check if our Server can be connected remotelly.
 
