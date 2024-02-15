@@ -4,21 +4,50 @@ Question answering is a classic problem in the field of natural language process
 ## Setup Enviroment
 You can use Google Colab or Simply run localy.
 
-In Windows we use Ubuntu WSL 
+In Windows we use Ubuntu WSL 2.0 
 
 ```
 bash
 ```
 then 
 ```
-python3 -m venv venv
+python3 -m venv .venv
 ```
 we activate it
 ```
-source venv/bin/activate
+source .venv/bin/activate
 ```
+we dopwnlod the requirements
+```
+wget https://raw.githubusercontent.com/ruslanmv/Watsonx-Assistant-with-Milvus-as-Vector-Database/master/requirements.txt
 
+```
+then we install it
 
+```
+pip install -r requirements.txt
+```
+then if you are in bash, 
+1. Open Visual Studio Code.
 
+```
+code .
+```
+2. We install the followig `Jupyter` extension
+   ![](assets/2024-02-15-15-40-21.png)
 
-This example will show you how to find the similar asked question and get the answer. It mainly consists of two notebooks, hoping everyone can learn basic operations of Question Answering System through the
+3. Press `Ctrl + Shift + P` (or `Cmd + Shift + P` on macOS) to open the command palette.
+4. Type `Python: Select Interpreter` in the command palette and select it.
+   ![](assets/2024-02-15-15-42-06.png)
+5. A list of available Python interpreters will appear. Scroll down or use the search box to find the WSL Ubuntu interpreter.
+![](assets/2024-02-15-15-42-45.png)
+
+## Question Answering Notebook
+
+This example will show you how to find the similar asked question and get the answer.
+
+[](./1_build_question_answering_engine.ipynb)
+
+Then repeat the previos step by selecting Select Kernel 
+![](assets/2024-02-15-15-54-48.png)
+and now we can proceed with the notebook.
