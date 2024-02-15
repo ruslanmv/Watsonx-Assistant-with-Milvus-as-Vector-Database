@@ -46,7 +46,7 @@ code .
 
 This example will show you how to find the similar asked question and get the answer.
 
-[](./1_build_question_answering_engine.ipynb)
+[build_question_answering_engine.ipynb](./1_build_question_answering_engine.ipynb)
 
 Then repeat the previos step by selecting Select Kernel 
 ![](assets/2024-02-15-15-54-48.png)
