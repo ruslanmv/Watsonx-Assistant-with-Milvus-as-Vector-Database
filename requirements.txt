@@ -1,0 +1,4 @@
+towhee 
+towhee.models 
+gradio
+pymilvus==2.2.11

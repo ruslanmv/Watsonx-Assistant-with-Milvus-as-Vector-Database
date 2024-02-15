@@ -123,27 +123,12 @@ you can visulaze the code [here](https://raw.githubusercontent.com/milvus-io/pym
 python3 hello_milvus.py
 ```
 the output is:
-```
-=== start connecting to Milvus     ===
-Does collection hello_milvus exist in Milvus: False
-=== Create collection `hello_milvus` ===
-=== Start inserting entities       ===
-Number of entities in Milvus: 3000
-=== Start Creating index IVF_FLAT  ===
-=== Start loading                  ===
-=== Start searching based on vector similarity ===
-...
-search latency = 0.1646s
-=== Start querying with `random > 0.5` ===
-...
-search latency = 0.1994s
-=== Start deleting with expr `pk in ["0" , "1"]` ===
-...
-query after delete by expr=`pk in ["0" , "1"]` -> result: []
-=== Drop collection `hello_milvus` ===
-```
+
+![](assets/2024-02-15-14-36-25.png)
 
 # Milvus Embedding Client
 
 Let first check if our Server can be connected remotelly.
+
+Let deep dive the question Answering Demo Test [here](notebooks/README.md)
 
