@@ -148,3 +148,7 @@ If you are unable to perform these checks  you  should open the inboud port of t
 Let first check if our Server can be connected remotelly.
 
 Let deep dive the question Answering Demo Test [here](notebooks/README.md)
+# Creation the Assistant
+Once our Vector Database is running, we can continue to create our Assitant.
+
+First let us create our backend pipeline [here](backend/README.md)
