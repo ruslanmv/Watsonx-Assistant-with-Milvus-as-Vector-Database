@@ -2,3 +2,8 @@
 backup/*
 venv/*
 .venv/
+.env
+*/.ipynb_checkpoints/*
+.ipynb_checkpoints*
+notebooks/.ipynb_checkpoints/0-Manage-VectorDatabase-checkpoint.ipynb
+notebooks/.ipynb_checkpoints/0-Manage-VectorDatabase-checkpoint.ipynb
