@@ -30,8 +30,6 @@ Got to Image and Profile and click Change image and find for ubuntu and we choos
 ![](assets/2024-02-14-16-49-31.png)
 7. We create a ssh key with the name pem_ibmcloud and we download.
 8.  Complete the remaining configuration options as default, storage options and network settings with exception of adding a port open to connect it.
-
-
 9. Once you have configured the instance, review the settings and click on the "Create" button to create the instance.
 10. IBM Cloud will initiate the provisioning process, and your Ubuntu instance will be created.
 Copy the public ip of you virtual instance.
@@ -80,7 +78,6 @@ sudo systemctl status milvus
 ### Testing Server
 
 First we assure that python3 is installed
-
 Add the deadsnakes PPA (might have Python 3.10)
 ```
 sudo add-apt-repository -y ppa:deadsnakes/ppa
@@ -94,19 +91,13 @@ sudo apt-get update
 sudo apt-get install -y python3.10
 sudo apt-get install -y python-pip
 ```
-
 # Verify installation
 python3.10 --version
-
-
 We install some packages to test 
-
 ```
 pip install numpy pymilvus 
 ```
-
 Download hello_milvus.py directly or with the following command.
-
 ```
 wget https://raw.githubusercontent.com/milvus-io/pymilvus/master/examples/hello_milvus.py
 
@@ -141,14 +132,11 @@ Replace `<server_ip_address>` with the actual IP address of your server. If the 
 
 If you are unable to perform these checks  you  should open the inboud port of the server, you can add the source the server where you will use to make the query.
 
-![](assets/2024-02-15-16-46-23.png)
 
 # Milvus Embedding Client
 
 Let first check if our Server can be connected remotelly.
-
 Let deep dive the question Answering Demo Test [here](notebooks/README.md)
 # Creation the Assistant
 Once our Vector Database is running, we can continue to create our Assitant.
-
 First let us create our backend pipeline [here](backend/README.md)
