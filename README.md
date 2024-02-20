@@ -90,9 +90,10 @@ sudo apt-get update
 ```
 sudo apt-get install -y python3.10
 sudo apt-get install -y python-pip
+sudo apt-get install python-is-python3
 ```
 # Verify installation
-python3.10 --version
+python --version
 We install some packages to test 
 ```
 pip install numpy pymilvus 
@@ -114,7 +115,7 @@ and then we proceed with the following actions
 you can visulaze the code [here](https://raw.githubusercontent.com/milvus-io/pymilvus/master/examples/hello_milvus.py)
 
 ```
-python3 hello_milvus.py
+python hello_milvus.py
 ```
 the output is:
 

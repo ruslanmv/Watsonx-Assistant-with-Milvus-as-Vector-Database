@@ -10,7 +10,7 @@ bash
 ```
 then 
 ```
-python3 -m venv .venv
+python -m venv .venv
 ```
 we activate it
 ```
