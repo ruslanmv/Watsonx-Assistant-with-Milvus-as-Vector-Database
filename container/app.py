@@ -185,4 +185,6 @@ interface = gradio.Interface(
     [chatbot, "state"],
     allow_flagging="never",
 )
-interface.launch(inline=True, share=False)
+#interface.launch(inline=True, share=False) #For the notebook
+interface.launch(server_name="0.0.0.0",
+                server_port=7860)
