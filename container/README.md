@@ -66,8 +66,15 @@ To build and run the gradio application using the provided Dockerfile, follow th
    ```bash
    docker run -it --env-file .env -p 7860:7860 watsonx-medical
    ```
+During the previos execution You got 
+![](assets/2024-02-22-15-29-04.png)
+
+
 
    This command runs the Docker container, passing the environment variables from the .env file using the `--env-file` flag. It also maps the container's port 7860 to the host's port 7860, allowing you to access the gradio application through `http://localhost:7860`.
+
+   Moreover ther is a test inside the ran of app.py to verify if indeed the program works.
+
 
 Please note that the provided instructions assume that your gradio application code is correctly configured to read the environment variables from the .env file.
 
@@ -77,8 +84,46 @@ API_KEY=<watsonx api key>
 PROJECT_ID=<WatsonX project id>
 ```
 
-Just try with this prompt
+If everythong went done well, just try with this prompt
 ```
 I have drink too much alcohol and I have headache what should do
 ```
+
+and you will recieve the following output
+
 ![](assets/2024-02-22-14-38-43.png)
+
+
+
+## Pushing your Docker image (optionally)
+
+To push your Docker image to a repository, follow these steps:
+
+1. Sign up for an account on Docker Hub (https://hub.docker.com/) if you haven't already.
+
+2. Log in to Docker Hub on your local machine using the terminal or command prompt. Run the following command and enter your Docker Hub credentials when prompted:
+```
+docker login
+```
+
+3. Tag your local image with the repository name and a desired tag.  For example:
+```
+docker tag watsonx-medical ruslanmv/watsonx-medical:latest
+```
+Replace `ruslanmv` with your Docker Hub username. You can also choose a different tag instead of `latest` if you prefer.
+
+4. Push the tagged image to Docker Hub using the `docker push` command. For example:
+```
+docker push ruslanmv/watsonx-medical:latest
+```
+
+
+5. After the push is completed, you can verify that the image is available in your Docker Hub repository by visiting https://hub.docker.com/ and checking your repositories.
+
+Now, others can pull the image from the repository using the following command:
+```
+docker pull ruslanmv/watsonx-medical:latest
+```
+
+
+**Congratulations!** You could build and execute your Medical Chatbot with Gradio within WatsonX and Milvus
