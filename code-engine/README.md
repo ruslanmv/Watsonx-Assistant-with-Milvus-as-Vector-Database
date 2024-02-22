@@ -11,6 +11,11 @@ First we go to Secrets and configmaps
 ![](assets/2024-02-22-17-52-36.png)
 
 ![](assets/2024-02-22-18-55-09.png)
+![](assets/2024-02-22-19-36-03.png)
+
+![](assets/2024-02-22-19-35-38.png)
+![](assets/2024-02-22-19-35-13.png)
+
 
 
 # By using IBM CLI
