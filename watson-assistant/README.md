@@ -28,4 +28,10 @@ In particular we have created for you this notebook of test here
 If the latest cell ran well you will get something like this
 ![](assets/2024-02-22-16-25-12.png)
 
+For the benchmarking we execute the folloging code
+
+and also we ran the application on the Code Engine
+![](assets/benchmark.png)
+
+
 
