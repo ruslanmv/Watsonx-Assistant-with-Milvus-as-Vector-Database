@@ -1,37 +1,73 @@
-# Watson Assistant with WatsonX Medical
+## Integrating your Gradio API into a Watson Assistant Chatbot
 
-First let us create a simple notebook to just test our API, if is working.
-We would like use Jupyter Notebook in Visual Studio Code.
+How you can integrate your Gradio API into a Watson Assistant chatbot to answer user questions:
 
-To create a new Jupyter Notebook in Visual Studio Code, follow these steps:
+**1. Create a Watson Assistant Skill:**
 
-1. Open Visual Studio Code.
+* Head to the IBM Cloud console and create a new Watson Assistant resource.
+* Follow the steps to create a new skill and choose "Dialog" as the authoring experience.
+* Start building your skill by defining intents and dialog nodes.
 
-2. Click on the "Extensions" icon in the Activity Bar on the side of the window (it looks like a square with four smaller squares inside) or press `Ctrl+Shift+X`.
+**2. Design Intents and Dialog Nodes:**
 
-3. Make sure the Jupyter extension is installed. If not, search for "Jupyter" in the search bar, find the Jupyter extension by Microsoft, and click on the Install button.
+* Define an intent for each type of question you want your chatbot to answer. For example, you could have intents for "Ask a medical question", "Ask about symptoms", or "Get information on a medication".
+* Under each intent, create dialog nodes that capture the user's specific question. You can use entities to extract relevant information like keywords or specific details.
 
-4. Press `Ctrl+Shift+P` to open the Command Palette.
+**3. Integrate the API call:**
 
-5. Type "Jupyter" in the Command Palette search bar, and select "Jupyter: Create New Blank Jupyter Notebook" from the dropdown list. This will create a new Jupyter Notebook with a `.ipynb` file extension.
+* Within your dialog nodes, use the "Actions" feature to call your Gradio API endpoint.
+* You can use Watson Assistant's built-in HTTP Request action to send the user's question to your API endpoint. For example:
+python
+from gradio_client import Client
 
-6. A new tab will open with an empty Jupyter Notebook. You can start adding code and markdown cells by clicking the `+` button in the toolbar or by using the "Insert cell" button (it looks like a blue rectangle with a plus sign) that appears when you hover over the space between cells.
+client = Client("https://watsonx-medical.16jc1w8uq8wb.us-south.codeengine.appdomain.cloud/")
+result = client.predict(
+        "Howdy!", # str in 'message' Textbox component
+        api_name="/predict"
+)
+print(result)
 
-7. To run a code cell, click on the cell and press `Shift+Enter`. The output will appear below the cell.
+* Pass the user's question as the input to the API (e.g., as the "message" field).
 
-8. To save the notebook, press `Ctrl+S` or click on "File" in the top menu and then "Save As" to choose the location and file name for your notebook.
+**4. Process the API response:**
 
-Now you have created and started working on a new Jupyter Notebook in Visual Studio Code.
+* Configure your dialog node to capture the response from your API. You can access the response data using variables like `$api_response`.
+* Depending on the format of your API response, you might need to parse or manipulate the data to extract the answer.
 
-In particular we have created for you this notebook of test here
-[API-Test-WatsonX.ipynb](./API-Test-WatsonX.ipynb)
-If the latest cell ran well you will get something like this
-![](assets/2024-02-22-16-25-12.png)
+**5. Respond to the user:**
 
-For the benchmarking we execute the folloging code
+* Use the "Text Response" or "Conditional Response" options to craft a response for the user based on the extracted answer.
+* You can personalize the response by including the user's name or tailoring the answer to their specific question.
 
-and also we ran the application on the Code Engine
-![](assets/benchmark.png)
+**6. Test and refine:**
 
+* Test your chatbot with various questions and ensure it's providing accurate and helpful answers.
+* Refine your dialog nodes, intents, and API calls based on user feedback and the performance of your chatbot.
 
+**Demo Chatbot Example:**
 
+Here's a simplified example of a dialog node that calls your Gradio API:
+
+**Intent:** Ask_Medical_Question
+
+**Dialog Node:** Get_Medical_Answer
+
+* **Conditions:**
+    * User input matches the #Ask_Medical_Question intent.
+* **Actions:**
+    * Send HTTP request to "/predict" endpoint of your Gradio API.
+    * Pass the user's input as the "message" parameter.
+    * Store the API response in the `$api_response` variable.
+* **Then:**
+    * Extract the answer from `$api_response` (based on your specific API format).
+    * Respond to the user with the answer, personalized with their name ("Hi [User Name], %s" % extracted_answer).
+
+Remember, this is just a starting point, and you might need to adjust it based on your specific API and desired functionality.
+
+**Additional Tips:**
+
+* Use context variables to store information across different dialog nodes.
+* Consider using Watson Assistant's built-in NLP capabilities for improved question understanding.
+* Explore the various response options in Watson Assistant to create engaging and informative interactions.
+
+By following these steps and customizing them to your specific needs, you can create a Watson Assistant chatbot that leverages your Gradio API to answer user questions effectively.
