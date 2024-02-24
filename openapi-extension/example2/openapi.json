@@ -1,0 +1,98 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Cloud Function API",
+      "version": "1.0.0"
+    },
+    "paths": {
+      "/cloud-function": {
+        "post": {
+          "summary": "Get information about an object of interest",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "object_of_interest": {
+                      "type": "string",
+                      "description": "The name of the object you want information about"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful response with object information and optional summary",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "object_of_interest": {
+                        "type": "string",
+                        "description": "The name of the object provided"
+                      },
+                      "summary": {
+                        "type": "string",
+                        "description": "Wikipedia summary of the object (optional)"
+                      },
+                      "message": {
+                        "type": "string",
+                        "description": "Error message if Wikipedia summary failed"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Missing required parameter",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "message": {
+                        "type": "string",
+                        "description": "Error message explaining the missing parameter"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "message": {
+                        "type": "string",
+                        "description": "Error message describing the internal issue"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "securitySchemes": {
+        "ApiKey": {
+          "type": "apiKey",
+          "name": "APIKey",
+          "in": "header"
+        }
+      }
+    }
+  }
+  

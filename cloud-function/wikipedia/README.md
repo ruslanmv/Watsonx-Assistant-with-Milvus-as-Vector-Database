@@ -38,3 +38,5 @@ and you will get
 
 ![](assets/2024-02-24-11-51-24.png)
 so this local function is working.
+Additional test might done [here](test.md)
+
