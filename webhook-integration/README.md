@@ -62,3 +62,8 @@ This guide expands on the previous explanation, providing details on calling a w
 * Refer to the Watson Language Translator documentation for detailed information on available languages and options: [https://www.ibm.com/docs/en/openpages/9.0.0?topic=integrations-watson-language-translator](https://www.ibm.com/docs/en/openpages/9.0.0?topic=integrations-watson-language-translator)
 
 This enhanced explanation provides a clearer understanding of how to configure the webhook, call the Watson Language Translator service, and include user input for translation within your Watson Assistant.
+
+References:
+https://cloud.ibm.com/docs/watson-assistant?topic=watson-assistant-dialog-webhooks
+https://cloud.ibm.com/docs/assistant?topic=assistant-dialog-webhooks
+https://cloud.ibm.com/docs/watson-assistant?topic=watson-assistant-webhook-overview
