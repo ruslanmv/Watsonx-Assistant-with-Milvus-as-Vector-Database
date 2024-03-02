@@ -1,4 +1,4 @@
-## Building a Watson Assistant with a Webhook for Translation (Enhanced)
+## Building a Watson Assistant with a Webhook for Translation
 
 This guide expands on the previous explanation, providing details on calling a webhook in the dialog menu to translate user input using the Watson Language Translator service.
 
@@ -12,23 +12,24 @@ This guide expands on the previous explanation, providing details on calling a w
 
 **1. Define the Webhook:**
 
-1. Navigate to your Watson Assistant service and open the desired Assistant.
-2. Under the "Skills" tab, create a new dialog skill or open an existing one.
-3. Within the skill, click on "Webhooks" located on the left sidebar.
+1. Navigate to your Watson Assistant service ancd create  Assistant.
+2. Then go to Assistant settings and click Activate dialog 
+3. Under the "Dialog" tab, go to Options and click on "Webhooks" located on the left sidebar.
 4. Enter the URL of the Watson Language Translator service endpoint: `https://api.us-south.language-translator.watson.cloud.ibm.com/v3/translate?version=2018-05-01`
-5. In the "Authorization" section, add the following headers:
-    - **Key:** "Authorization"
-    - **Value:** `Basic <encoded_credentials>` (replace `<encoded_credentials>` with your service's API key, encoded as Base64)
-6. Click **Save**.
+- In the "Headers" section, add a header named "Content-Type" with the value "application/json" to specify the request format.
 
 **2. Add a Webhook Callout to a Dialog Node:**
 
-1. Open the dialog node where you want to trigger the translation.
-2. Click "Customize" on the right corner of the node.
-3. Scroll down to the "Webhook" section and toggle "Call out to webhooks/actions" to **On**.
-4. Select "Call a webhook" and click **Apply**.
-
-**3. Configure Webhook Callout:**
+1. Open te dialog and create dialog.
+2. Create a new node by clicking add new node, and  the dialog node where you want to trigger the translation.
+3. Click "Customize" on the right corner of the node.
+   ![](assets/2024-02-27-18-34-16.png)
+4. Scroll down to the "Webhook" section and toggle "Call out to webhooks/actions" to **On**.
+![](assets/2024-02-27-18-43-03.png)
+5. Select "Call a webhook" and click **Apply**.
+and you got
+![](assets/2024-02-27-18-44-25.png)
+**3. Configure the Webhook Request:**
 
 1. **In the "Parameters" section:**
     - Add a key-value pair:
@@ -36,7 +37,9 @@ This guide expands on the previous explanation, providing details on calling a w
         - **Value:** "en-es" (replace "en-es" with your desired translation language code, e.g., "es-fr" for Spanish to French)
     - Add another key-value pair:
         - **Key:** "text"
-        - **Value:** `<? input.text ?>` (this sends the user's input text to the service)
+        - **Value:** "<? input.text ?>" (this sends the user's input text to the service)
+![](assets/2024-02-27-18-49-57.png)
+
 
 **4. Create Conditional Responses:**
 
