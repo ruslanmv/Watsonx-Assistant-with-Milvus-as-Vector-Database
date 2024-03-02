@@ -29,3 +29,15 @@ The OpenAPI document must satisfy the following requirements and restrictions:
 - Schemas that are defined by using anyOf, oneOf, and allOf are currently not supported.
 
 - In addition, any call to the external API must complete within 30 seconds.
+
+
+# Testing OpenAPI extensions
+
+We developed a simple notebook to verify the openapi.json extensions.
+
+## Examples 1
+
+```
+cd example1
+
+```
