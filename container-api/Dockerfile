@@ -22,6 +22,6 @@ WORKDIR $HOME/app
 # Copy the current directory contents into the container at $HOME/app setting the owner to the user
 COPY --chown=user . $HOME/app
 
-EXPOSE 7860
+EXPOSE 8080
 
 CMD ["python", "app.py"]

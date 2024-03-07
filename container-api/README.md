@@ -1,13 +1,10 @@
-## WatsonX.ai container client question-answering application with Milvus and LangChain with Flask and openapi.
+## WatsonX.ai container client question-answering application with Milvus and LangChain with Flask and OpenApi.
 This guide demonstrates how to build an contiainer for client Watsonx.ai LLM-driven question-answering application with Milvus and LangChain
-
 To run this application locally just we ran the following command:
-
  ```
  python app.py
  ```
 ![](assets/2024-03-02-17-36-34.png)
-
 
 ## API Connection
 ### With Python
@@ -88,32 +85,26 @@ in the terminal also you get
 ## Container
 
 To build and run the gradio application using the provided Dockerfile, follow these steps:
-
 1. Ensure that you have Docker installed on your system.
-
 2. Place the Dockerfile in the same directory as your gradio application code and the .env file.
-
 3. Open a terminal or command prompt and navigate to the directory containing the Dockerfile.
-
-4. Run the following command to build the Docker image, replacing "watsonx-medical" with your desired image name:
-
+4. Run the following command to build the Docker image, replacing "watsonx-medical-api" with your desired image name:
    ```bash
-   docker build -t watsonx-medical .
+   docker build --no-cache -t watsonx-medical-api .
    ```
-![](assets/2024-02-22-14-22-34.png)
+![](assets/2024-03-07-17-53-44.png)
    This command will build the Docker image using the Dockerfile and the context of the current directory.
-
 5. After successfully building the image, you can run the gradio application in a Docker container using the following command:
 
    ```bash
-   docker run -it --env-file .env -p 7860:7860 watsonx-medical
+   docker run -it --env-file .env -p 8080:8080 watsonx-medical-api
    ```
 During the previos execution You got 
 ![](assets/2024-02-22-15-29-04.png)
 
 
 
-   This command runs the Docker container, passing the environment variables from the .env file using the `--env-file` flag. It also maps the container's port 7860 to the host's port 7860, allowing you to access the gradio application through `http://localhost:7860`.
+   This command runs the Docker container, passing the environment variables from the .env file using the `--env-file` flag. It also maps the container's port 8080 to the host's port 8080, allowing you to access the gradio application through `http://localhost:8080`.
 
    Moreover ther is a test inside the ran of app.py to verify if indeed the program works.
 
