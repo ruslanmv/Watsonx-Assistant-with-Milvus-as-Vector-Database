@@ -113,10 +113,10 @@ and also your container
 ![](assets/2024-03-11-12-15-02.png)
 
 
-   Moreover ther is a test inside the ran of app.py to verify if indeed the program works.
+Moreover you can test the container local by running in the root directory the following command
 
 ```
-
+python ./container-api/api-test.py
 ```
 
 Please note that the provided instructions assume that your gradio application code is correctly configured to read the environment variables from the .env file.
@@ -129,12 +129,11 @@ PROJECT_ID=<WatsonX project id>
 
 If everythong went done well, just try with this prompt
 ```
-I have drink too much alcohol and I have headache what should do
+I have started to get lots of acne on my face, particularly on my forehead what can I do
 ```
 
-and you will recieve the following output
+![](assets/2024-03-11-12-39-07.png)
 
-![](assets/2024-02-22-14-38-43.png)
 
 
 
@@ -151,13 +150,13 @@ docker login
 
 3. Tag your local image with the repository name and a desired tag.  For example:
 ```
-docker tag watsonx-medical ruslanmv/watsonx-medical:latest
+docker tag watsonx-medical-api ruslanmv/watsonx-medical-api:latest
 ```
 Replace `ruslanmv` with your Docker Hub username. You can also choose a different tag instead of `latest` if you prefer.
 
 4. Push the tagged image to Docker Hub using the `docker push` command. For example:
 ```
-docker push ruslanmv/watsonx-medical:latest
+docker push ruslanmv/watsonx-medical-api:latest
 ```
 
 
@@ -165,8 +164,6 @@ docker push ruslanmv/watsonx-medical:latest
 
 Now, others can pull the image from the repository using the following command:
 ```
-docker pull ruslanmv/watsonx-medical:latest
+docker pull ruslanmv/watsonx-medical-api:latest
 ```
-
-
 **Congratulations!** You could build and execute your Medical Chatbot with Flask within WatsonX and Milvus

@@ -4,7 +4,7 @@ import os
 # get the current working directory
 current_working_directory = os.getcwd()
 # Join various path components
-openapi_path=os.path.join(current_working_directory, "openapi.json")
+openapi_path=os.path.join(current_working_directory,"container-api", "openapi.json")
 print(openapi_path)
 # Load the openapi.json file
 with open(openapi_path, 'r') as file:

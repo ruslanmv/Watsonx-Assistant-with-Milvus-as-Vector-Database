@@ -14,17 +14,12 @@ Additionally we need to define the `Secret (generic)`
 we we define our secrets keys used for the  enviroment in the docker container
 ![](assets/2024-02-23-12-00-45.png)
 
-
 Finally we can create an application
 we choose the `Container image`  we give a name like for example `watsonx-medical`  
-
-
 
 and we click configure image, and we full fill with our previos `docker-hubs-secrets created` before
 
 ![](assets/2024-02-23-12-03-04.png)
-
-
 
 For rersource and scaling we use
 ![](assets/2024-02-23-12-05-08.png)
@@ -68,7 +63,6 @@ For example you can retrieve it by clicking Manage > Account > Resource groups
 
 ![](assets/2024-02-22-17-33-52.png)
 
-
 Run `ibmcloud target -g RESOURCE_GROUP_NAME`, for example
 
 ```
@@ -98,23 +92,17 @@ ibmcloud target
 ```
 This command will display the current target region, organization, and space.
 
-
 ### Create a Code Engine project
 
 ```
 ibmcloud ce project create --name watsonx-medical-project
 ```
-
-
 Set the current project context
 
 ```
 ibmcloud ce project select -n watsonx-medical-project
 ```
-
-
 or also you can choose it by id
-
 
 ```
 ibmcloud ce project select --id 349bb3bc-482a-4b6e-a226-e5ee6f29ef9c
