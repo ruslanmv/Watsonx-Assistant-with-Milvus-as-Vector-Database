@@ -63,10 +63,12 @@ For example you can retrieve it by clicking Manage > Account > Resource groups
 
 ![](assets/2024-02-22-17-33-52.png)
 
+
+
 Run `ibmcloud target -g RESOURCE_GROUP_NAME`, for example
 
 ```
-ibmcloud target -g 7a2041499b7141feac3a2beac59b8b80
+ibmcloud target -g cc-6670df0nwl8-ug0jk8nz
 
 ```
 
