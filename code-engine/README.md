@@ -32,7 +32,7 @@ Then we add the enviroment variables just created
 then we add the listeing port `7860`
 ![](assets/2024-02-23-12-10-22.png)
 
-
+Note if we are using the container-api version we should use  port `8080`.
 And finally click in create
 ![](assets/2024-02-22-18-55-09.png)
 Then we can see the app is deployed and running
@@ -148,7 +148,7 @@ Create the Code Engine application using the image from IBM Cloud Container Regi
 To create an application in IBM Cloud Code Engine using an image from IBM Cloud Container Registry and the previously created secrets, you can modify the command as follows:
 
 ```
-ibmcloud code-engine application create --name watsonx-medical --image icr.io/watsonx-medical-namespace/watsonx-medical:latest --port 8501 --env-from-secret bucket-secret --registry-secret watsonx-medical-registry
+ibmcloud code-engine application create --name watsonx-medical --image icr.io/watsonx-medical-namespace/watsonx-medical:latest --port 7860 --env-from-secret bucket-secret --registry-secret watsonx-medical-registry
 ```
 In this command:
 
@@ -167,15 +167,24 @@ If you want to create the application form the Docker Container
 ```
 ibmcloud code-engine application create --name watsonx-medical --image docker.io/ruslanmv/watsonx-medical:latest --port 8501 --env-from-secret bucket-secret --registry-secret my-docker-registry
 ```
-After you typed the previous command you can  copy your  url
-as for example my case is
+After you typed the previous command you have created your app.
 
+For example my case is the url of the app is
 ```
 https://watsonx-medical-api.1doe5vsg6flg.us-south.codeengine.appdomain.cloud/
 
 ```
 
-and open the [openapi.json](./openapi.json) and add the appropiate url
+## Contianer Gradio version
+
+You can open this application on your web browser
+
+![](assets/2024-02-22-19-35-13.png)
+
+
+## Container-Api version
+
+If you are using this version so simply you can test it by oppening the [openapi.json](./openapi.json) and add the appropiate url
 
 ![](assets/2024-03-11-16-57-05.png)
 
@@ -184,7 +193,6 @@ then  test it  by typing
 python ./code-engine/api-test.py
 ```
 
-
 will get the following response 
 
 ![](assets/2024-03-11-17-03-25.png)
@@ -192,6 +200,3 @@ will get the following response
 Additionally you can monitor your application in Code Engine
 
 ![](assets/2024-03-11-17-05-03.png)
-
-
-
