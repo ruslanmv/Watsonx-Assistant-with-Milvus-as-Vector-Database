@@ -100,14 +100,24 @@ To build and run the gradio application using the provided Dockerfile, follow th
    docker run -it --env-file .env -p 8080:8080 watsonx-medical-api
    ```
 During the previos execution You got 
-![](assets/2024-02-22-15-29-04.png)
+![](assets/2024-03-11-12-05-35.png)
 
 
 
    This command runs the Docker container, passing the environment variables from the .env file using the `--env-file` flag. It also maps the container's port 8080 to the host's port 8080, allowing you to access the gradio application through `http://localhost:8080`.
 
+You can see the image created at Docker Desktop
+![](assets/2024-03-11-12-14-36.png)
+
+and also your container
+![](assets/2024-03-11-12-15-02.png)
+
+
    Moreover ther is a test inside the ran of app.py to verify if indeed the program works.
 
+```
+
+```
 
 Please note that the provided instructions assume that your gradio application code is correctly configured to read the environment variables from the .env file.
 
