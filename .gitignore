@@ -9,3 +9,4 @@ notebooks/.ipynb_checkpoints/0-Manage-VectorDatabase-checkpoint.ipynb
 notebooks/.ipynb_checkpoints/0-Manage-VectorDatabase-checkpoint.ipynb
 backend/.chroma/*
 cloud-function/wikipedia/__pycache__/app.cpython-310.pyc
+env.sh
