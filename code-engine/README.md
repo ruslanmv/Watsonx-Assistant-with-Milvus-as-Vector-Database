@@ -167,12 +167,31 @@ If you want to create the application form the Docker Container
 ```
 ibmcloud code-engine application create --name watsonx-medical --image docker.io/ruslanmv/watsonx-medical:latest --port 8501 --env-from-secret bucket-secret --registry-secret my-docker-registry
 ```
-After you typed the previous command you will get the following response 
-
-In my case when you open your browser with the following url
-```
-https://watsonx-medical.1a6j02a995w8.us-south.codeengine.appdomain.cloud
+After you typed the previous command you can  copy your  url
+as for example my case is
 
 ```
-The application will loading, after that you can upload a sample questions.txt, then you upload this file then it is processed. 
+https://watsonx-medical-api.1doe5vsg6flg.us-south.codeengine.appdomain.cloud/
+
+```
+
+and open the [openapi.json](./openapi.json) and add the appropiate url
+
+![](assets/2024-03-11-16-57-05.png)
+
+then  test it  by typing
+```
+python ./code-engine/api-test.py
+```
+
+
+will get the following response 
+
+![](assets/2024-03-11-17-03-25.png)
+
+Additionally you can monitor your application in Code Engine
+
+![](assets/2024-03-11-17-05-03.png)
+
+
 
