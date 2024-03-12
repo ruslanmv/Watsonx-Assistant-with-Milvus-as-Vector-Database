@@ -88,8 +88,18 @@ This tutorial guides you through creating a Watson assistant that utilizes a cus
     Medical Query
     ```
 
+    then you ask for example
+
+    ```
+    I have drunk too much alcohol I have headache what should do
+    ```
+
+you got
+
 
 ![](assets/2024-03-12-17-53-09.png)
+
+
 
 
 5. **Define Action Variables:**
