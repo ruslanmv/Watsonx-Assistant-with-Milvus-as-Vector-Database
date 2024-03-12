@@ -1,73 +1,71 @@
-## Integrating your Gradio API into a Watson Assistant Chatbot
 
-How you can integrate your Gradio API into a Watson Assistant chatbot to answer user questions:
+## Creating a Watson Assistant with a Custom Extension (MedicX)
 
-**1. Create a Watson Assistant Skill:**
+This tutorial guides you through creating a Watson assistant that utilizes a custom extension (MedicX) to interact with an external API. We'll achieve this without dialog skills or webhooks, focusing on modern actions and extension calls.
 
-* Head to the IBM Cloud console and create a new Watson Assistant resource.
-* Follow the steps to create a new skill and choose "Dialog" as the authoring experience.
-* Start building your skill by defining intents and dialog nodes.
+### Prerequisites:
 
-**2. Design Intents and Dialog Nodes:**
+* An IBM Cloud account with access to Watson Assistant service
+* Basic understanding of Watson Assistant and creating actions
 
-* Define an intent for each type of question you want your chatbot to answer. For example, you could have intents for "Ask a medical question", "Ask about symptoms", or "Get information on a medication".
-* Under each intent, create dialog nodes that capture the user's specific question. You can use entities to extract relevant information like keywords or specific details.
+### Steps:
 
-**3. Integrate the API call:**
+1. **Create a New Watson Assistant:**
+    * Log in to your IBM Cloud account and access the Watson Assistant service.
+    * Click on "Create assistant" and provide a name and description for your assistant.
+     ![](assets/2024-03-11-18-54-49.png)
+     
+    * Click "Create" to initiate the assistant creation.
+     ![](assets/2024-03-11-18-56-03.png)
+2. **Build the Custom Extension:**
+    * Navigate to the "Integrations" tab within your newly created assistant.
+    * Click on "Build custom extension."
+     ![](assets/2024-03-11-19-00-33.png)
+    * In the "Basic information" section, provide a name and description for your custom extension (e.g., MedicX Extension).
+     ![](assets/2024-03-11-19-01-23.png)
+    * Click "Next" to proceed to the "Import OpenAPI" step.
+    * In this step, you'll import the OpenAPI document (openapi.json) that describes the MedicX API. You can typically find this file on the MedicX developer portal or documentation. Click "Browse" and select the `code-engine/openapi.json` file (replace with the actual location of your file)
+    ![](assets/2024-03-11-19-04-10.png)
+    * Click "Next" to review the imported operations. This allows you to verify that the extension can interact with the MedicX API endpoints as defined in the OpenAPI document.
+    * If everything looks good, click "Finish" to create the custom extension.
+    ![](assets/2024-03-11-19-05-24.png)
 
-* Within your dialog nodes, use the "Actions" feature to call your Gradio API endpoint.
-* You can use Watson Assistant's built-in HTTP Request action to send the user's question to your API endpoint. For example:
-python
-from gradio_client import Client
+3. **Add the Custom Extension to Your Assistant:**
+    * On the "Extensions" dashboard, locate your newly created MedicX extension.
+    ![](assets/2024-03-11-19-07-16.png)
+    * Click the extension tile and then click "Add" to integrate it with your assistant.
+     ![](assets/2024-03-11-19-07-46.png)
+    * Follow the on-screen prompts to complete the integration process.
+      ![](assets/2024-03-11-19-10-23.png)   
+4. **Create an Action:**
+    * Navigate to the "Actions" tab within your assistant.
+    * Click on "Create action" and provide a name and description for your action (e.g., Process Medical Query).
+    ![](assets/2024-03-11-19-12-25.png)
+    * This action will handle user queries and interact with the MedicX API through the custom extension.
+    ![](assets/2024-03-11-19-14-07.png)
+5. **Define Action Variables:**
+    * In the action editor, create a new assistant variable to store the user's input message. For example, you can name it `user_input` and set its initial value to `<? input.text ?>`. This captures the user's text input during the conversation.
 
-client = Client("https://watsonx-medical.16jc1w8uq8wb.us-south.codeengine.appdomain.cloud/")
-result = client.predict(
-        "Howdy!", # str in 'message' Textbox component
-        api_name="/predict"
-)
-print(result)
+6. **Call the MedicX API:**
+    * Within the action flow, you'll use the `Use extension` node to invoke the desired MedicX API endpoint.
+    * Click on the "+" icon to add a new node and select "Use extension."
+    * In the "Extension" dropdown, choose your custom extension (MedicX Extension).
+    * Select the specific operation you want to call from the MedicX API (e.g., send a message and receive a response).
+    * Update the optional parameters as needed. Typically, you'll populate these parameters with the user input stored in the `user_input` variable. 
 
-* Pass the user's question as the input to the API (e.g., as the "message" field).
+        * **History:** (Optional) This parameter might be used by the MedicX API to maintain conversation context. You can leave it blank or populate it based on your specific use case.
+        * **Message:** This parameter should be set to the user's input retrieved from the `user_input` variable (`<? user_input ?>`). This ensures the MedicX API receives the user's query.
 
-**4. Process the API response:**
+    * Click "Apply" to save the extension call configuration.
 
-* Configure your dialog node to capture the response from your API. You can access the response data using variables like `$api_response`.
-* Depending on the format of your API response, you might need to parse or manipulate the data to extract the answer.
+7. **Process the Response:**
+    * After calling the MedicX API, you can add additional nodes to your action to process the response received. This might involve parsing the response data, extracting relevant information, and crafting a response for the user.
+    * Utilize response variables and conditional logic within your action to handle different scenarios based on the MedicX API response.
 
-**5. Respond to the user:**
+8. **Test and Train:**
+    * Once you've defined the action flow, including the MedicX extension call and response processing, save your action.
+    * Test your assistant using the "Test" functionality within Watson Assistant to simulate user interactions and observe how your assistant interacts with the MedicX API.
+    * Train your assistant with relevant conversation examples to improve its accuracy in understanding user queries and responding with MedicX API-powered insights.
 
-* Use the "Text Response" or "Conditional Response" options to craft a response for the user based on the extracted answer.
-* You can personalize the response by including the user's name or tailoring the answer to their specific question.
+**By following these steps, you've successfully created a Watson assistant that leverages a custom extension to interact with an external API (MedicX). This empowers your assistant to access valuable data and functionalities from external sources, enhancing its capabilities and user experience.**
 
-**6. Test and refine:**
-
-* Test your chatbot with various questions and ensure it's providing accurate and helpful answers.
-* Refine your dialog nodes, intents, and API calls based on user feedback and the performance of your chatbot.
-
-**Demo Chatbot Example:**
-
-Here's a simplified example of a dialog node that calls your Gradio API:
-
-**Intent:** Ask_Medical_Question
-
-**Dialog Node:** Get_Medical_Answer
-
-* **Conditions:**
-    * User input matches the #Ask_Medical_Question intent.
-* **Actions:**
-    * Send HTTP request to "/predict" endpoint of your Gradio API.
-    * Pass the user's input as the "message" parameter.
-    * Store the API response in the `$api_response` variable.
-* **Then:**
-    * Extract the answer from `$api_response` (based on your specific API format).
-    * Respond to the user with the answer, personalized with their name ("Hi [User Name], %s" % extracted_answer).
-
-Remember, this is just a starting point, and you might need to adjust it based on your specific API and desired functionality.
-
-**Additional Tips:**
-
-* Use context variables to store information across different dialog nodes.
-* Consider using Watson Assistant's built-in NLP capabilities for improved question understanding.
-* Explore the various response options in Watson Assistant to create engaging and informative interactions.
-
-By following these steps and customizing them to your specific needs, you can create a Watson Assistant chatbot that leverages your Gradio API to answer user questions effectively.
