@@ -40,9 +40,58 @@ This tutorial guides you through creating a Watson assistant that utilizes a cus
 4. **Create an Action:**
     * Navigate to the "Actions" tab within your assistant.
     * Click on "Create action" and provide a name and description for your action (e.g., Process Medical Query).
+    
     ![](assets/2024-03-11-19-12-25.png)
     * This action will handle user queries and interact with the MedicX API through the custom extension.
-    ![](assets/2024-03-11-19-14-07.png)
+    ![](assets/2024-03-12-10-21-43.png)
+
+    We create the first step, we can say
+    ```
+    Please enter in your question
+    ``
+    ![](assets/2024-03-12-17-23-04.png)
+
+
+    and then we define a custemer response like Free text
+    ![](assets/2024-03-12-17-23-58.png)
+
+    then we create an extra step, the step we name
+
+    `Call custom extension`
+    and then we continue to next step by using an extension
+    ![](assets/2024-03-12-17-26-24.png)
+
+    For input message you will choose Action Step Variables and then you choose the first step 1.`Please enter in your question`
+    ![](assets/2024-03-12-17-28-25.png)
+
+    then click apply. Then we create a new step, with conditions, we choose My Medical Api (step2) then Ran successfully 
+    ![](assets/2024-03-12-17-31-51.png)
+
+    in order to express code we set variable values, and we create a `New session variable`
+    ![](assets/2024-03-12-17-33-44.png)
+
+    we name result and will be free text and then apply.
+
+    ```
+    ${result} =${body.message}+"\\nOutput: \\n"+${body.response}
+   
+    ```
+    ![](assets/2024-03-12-17-49-55.png)
+    
+    then in the assitant says you add a function result
+
+    ![](assets/2024-03-12-17-50-43.png)
+
+    then type
+
+    ```
+    Medical Query
+    ```
+
+
+![](assets/2024-03-12-17-53-09.png)
+
+
 5. **Define Action Variables:**
     * In the action editor, create a new assistant variable to store the user's input message. For example, you can name it `user_input` and set its initial value to `<? input.text ?>`. This captures the user's text input during the conversation.
 
