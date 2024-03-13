@@ -1,7 +1,7 @@
-![alt text](./assets/intro.png)
+
 # Watsonx Assistant with Milvus as Vector Database
 Hello everyone, today We are going to build a WatsonX Assistant with Milvus as Vector Database. 
-
+![alt text](./assets/intro.png)
 # Introduction 
 
 ![alt text](imagenx.png)
