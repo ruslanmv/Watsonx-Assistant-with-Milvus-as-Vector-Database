@@ -155,10 +155,7 @@ If you want to end you can create a new step
     ![](assets/2024-03-12-17-53-09.png)
 
    * Test your assistant  Watson Assistant to simulate user interactions and observe how your assistant interacts with the MedicX API.
-You can try the following question and check it out  in preview
-
-![](assets/2024-03-13-12-04-57.png)
-with the question
+You can try the following question and check it out  in preview, clickin on Medical query and then type the question
 ```
   I have drunk too much alcohol I have headache what should do
 ```
